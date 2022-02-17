@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #262467;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #262467;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FormController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="14.0" prefHeight="55.0" prefWidth="290.0" text="Create your account" textFill="WHITE">
          <font>
@@ -177,7 +177,7 @@
       </VBox>
       <HBox layoutX="51.0" layoutY="325.0" prefHeight="50.0" prefWidth="500.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" style="-fx-cursor: hand;" text="Submit">
+            <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#Submit" prefHeight="40.0" prefWidth="115.0" style="-fx-cursor: hand;" text="Submit">
                <HBox.margin>
                   <Insets left="125.0" />
                </HBox.margin>
@@ -185,7 +185,7 @@
                   <Font name="Arial Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" style="-fx-cursor: hand;" text="Back">
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#Back" prefHeight="40.0" prefWidth="115.0" style="-fx-cursor: hand;" text="Back">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

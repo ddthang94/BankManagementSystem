@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #262467;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #262467;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccountController">
    <children>
       <TabPane layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="320.0" style="-fx-border-radius: 7; -fx-border-width: 6;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -163,7 +163,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="346.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-cursor: hand;" text="Sign Out" textAlignment="CENTER">
+      <Button fx:id="btnSignOut" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="346.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="40.0" prefWidth="240.0" style="-fx-cursor: hand;" text="Sign Out" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
