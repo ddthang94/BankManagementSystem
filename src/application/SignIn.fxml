@@ -50,7 +50,7 @@
             </PasswordField>
             <HBox prefHeight="80.0" prefWidth="290.0">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignIn" prefHeight="30.0" prefWidth="100.0" style="-fx-cursor: hand;" text="Sign In">
+                  <Button fx:id="btnSignIn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignIn" prefHeight="30.0" prefWidth="100.0" style="-fx-cursor: hand;" text="Sign In">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -68,7 +68,7 @@
                               <Insets left="10.0" top="3.0" />
                            </VBox.margin>
                         </Label>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignUp" prefHeight="30.0" prefWidth="160.0" style="-fx-cursor: hand;" text="Create a new account">
+                        <Button fx:id="btnSignUp" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SignUp" prefHeight="30.0" prefWidth="160.0" style="-fx-cursor: hand;" text="Create a new account">
                            <VBox.margin>
                               <Insets left="10.0" />
                            </VBox.margin>
