@@ -1,5 +1,9 @@
 package application;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -10,6 +14,7 @@ import javafx.scene.image.Image;
 
 public class Main extends Application {
 	static Stage pstage;
+	static Connection connect;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -33,10 +38,16 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void connectDB(String url, String user, String pass) throws SQLException {
+		// Connecting to database at the beginning of the program
+		connect = DriverManager.getConnection(url, user, pass);
+		System.out.println(connect);
+	}
 		
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// connect to local instance in the secured mode
-				
+		connectDB("jdbc:mysql://localhost:3306/?user=root", "root", "Cr.21112807");
 		// launching the window
 		launch(args);
 	}

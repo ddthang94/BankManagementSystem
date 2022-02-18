@@ -1,0 +1,3 @@
+create table UserInformation (
+	id INT notnull
+)
