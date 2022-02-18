@@ -21,7 +21,6 @@ public class Main extends Application {
 		pstage = primaryStage;
 		changeScene("SignIn.fxml");
 	}
-	
 	// changeScene() function is used to switch between Scenes(Page)
 	public void changeScene(String gui) {
 		try {

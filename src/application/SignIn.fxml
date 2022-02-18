@@ -87,7 +87,7 @@
             <Font name="Arial Bold Italic" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="139.0" prefHeight="196.0" prefWidth="273.0" text="This Bank Management Software was created by using Java, JavaFX as Graphical User Interface and MongoDB as a database&#10;&#10;Developed by:&#10;&#9;Student: Thang Diem Dang&#10;&#9;Faculty number: 273219010&#10;&#9;Computer Sciences&#10;&#9;Technical University Sofia-BG" textFill="WHITE" wrapText="true">
+      <Label layoutX="14.0" layoutY="139.0" prefHeight="196.0" prefWidth="273.0" text="This Bank Management Software was created by using Java, JavaFX as Graphical User Interface and MySQL as a database&#10;&#10;Developed by:&#10;&#9;Student: Thang Diem Dang&#10;&#9;Faculty number: 273219010&#10;&#9;Computer Sciences&#10;&#9;Technical University Sofia-BG" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Arial Italic" size="14.0" />
          </font>
