@@ -168,7 +168,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="343.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-cursor: hand;" text="OK !" textAlignment="CENTER">
+      <Button fx:id="btOK" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="343.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-cursor: hand;" text="OK !" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

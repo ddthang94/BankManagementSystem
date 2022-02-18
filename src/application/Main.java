@@ -1,5 +1,5 @@
 package application;
-	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -35,8 +35,8 @@ public class Main extends Application {
 	}
 		
 	public static void main(String[] args) {
-		// connect to local instance in unsecured mode (don't require a username and password)
-		//MongoClient mongoClient = MongoClients.create();
+		// connect to local instance in the secured mode
+				
 		// launching the window
 		launch(args);
 	}
