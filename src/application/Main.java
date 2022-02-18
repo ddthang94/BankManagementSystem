@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 
 
 public class Main extends Application {
-	
 	static Stage pstage;
 
 	@Override
@@ -36,6 +35,9 @@ public class Main extends Application {
 	}
 		
 	public static void main(String[] args) {
+		// connect to local instance in unsecured mode (don't require a username and password)
+		//MongoClient mongoClient = MongoClients.create();
+		// launching the window
 		launch(args);
 	}
 }

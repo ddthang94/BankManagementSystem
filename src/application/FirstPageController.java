@@ -15,11 +15,18 @@ public class FirstPageController {
 	private Button btnSignIn;
 	@FXML
 	private Button btnSignUp;
-	
-	static Customer customer;
-	
+		
 	public void SignIn() {
-		new Main().changeScene("UserAccount.fxml");
+//		if (tUsername.getText() != null || tPassword.getText() != null) {
+//			Alert a = new Alert(Alert.AlertType.INFORMATION);
+//			a.setTitle("Messages");
+//			a.setResizable(false);
+//			a.setHeaderText("To continue, you have to fill in the Username and Password!");
+//			a.showAndWait();
+//		} 
+//		else {
+			new Main().changeScene("UserAccount.fxml");
+//		}
 	}
 	public void SignUp() {
 		new Main().changeScene("SignUpForm.fxml");
