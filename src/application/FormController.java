@@ -38,27 +38,24 @@ public class FormController implements Initializable {
     
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
-		Customer cust = FirstPageController.customer;
-		username.setText(cust.getUsername());
-		password.setText(cust.getPassword());
 		gender.setItems(FXCollections.observableArrayList("Male","Female"));
 	}	
     
     public void Back() {
     	new Main().changeScene("SignIn.fxml");
     }
-
     
     public void Submit() throws SQLException {
     	System.out.println(gender.getSelectionModel().getSelectedItem());
     	Customer cust = new Customer(fname.getText(), lname.getText(), username.getText(), password.getText(), phoneNum.getText(), 
-    			email.getText(), doBirth.getValue().toString(), gender.getSelectionModel().getSelectedItem());
+    								email.getText(), doBirth.getValue().toString(), gender.getSelectionModel().getSelectedItem());
     	objUpload(cust);
     	new Main().changeScene("SignIn.fxml");
     }
     
     public void objUpload(Customer cust) throws SQLException {
-    	String query1 = "INSERT INTO `bank`.`information` VALUES (NULL,'"+cust.getFname()+"','"+cust.getFname()+"','"+cust.getUsername()+"','"+cust.getPhoneNum()+"','"+cust.getEmail()+"','"+cust.getDoBirth()+"','"+cust.getGender()+"', "+0+");";
+    	String query1 = "INSERT INTO `bank`.`information` VALUES (NULL,'"+cust.getFname()+"','"+cust.getLname()+"','"+cust.getUsername()+"','"+cust.getPhoneNum()+"',"
+    															+ "'"+cust.getEmail()+"','"+cust.getDoBirth()+"','"+cust.getGender()+"', "+0+");";
     	PreparedStatement ps = Main.connect.prepareStatement(query1);
     	int i = ps.executeUpdate();
     		if(i==1)System.out.println("Success1");

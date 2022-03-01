@@ -23,7 +23,7 @@ public class FirstPageController {
 	
 	static Customer customer;
 	
-	public void SignIn() {
+	public void SignIn() {		
 		try {
 			String query1 = "SELECT id,password FROM bank.login WHERE username = '"+tUsername.getText()+"';";
 			Statement st = Main.connect.createStatement();
@@ -37,14 +37,14 @@ public class FirstPageController {
 				new Main().changeScene("UserAccount.fxml");
 			}
 		} catch(SQLException sqlException) {
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("Message");
-			alert.setResizable(false);
-			alert.setHeaderText("Please correct the username or password");
-			alert.showAndWait();
+			Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+			alert1.setTitle("Message");
+			alert1.setResizable(false);
+			alert1.setHeaderText("Please enter the username or password");
+			alert1.showAndWait();
 		}
-		//new Main().changeScene("UserAccount.fxml");
 	}
+	
 	public void SignUp() {
 		customer = new Customer(tUsername.getText(), tPassword.getText());
 		new Main().changeScene("SignUpForm.fxml");
