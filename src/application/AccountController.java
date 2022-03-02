@@ -44,30 +44,6 @@ public class AccountController implements Initializable {
 	private Button btnDeposit;
 	@FXML
 	private Button btnWithdraw;
-	
-	// Keyboard
-	@FXML
-    private Button btnOne;
-	@FXML
-    private Button btnTwo;
-	@FXML
-    private Button btnThree;
-	@FXML
-    private Button btnFour;
-	@FXML
-    private Button btnFive;
-	@FXML
-    private Button btnSix;
-	@FXML
-    private Button btnSeven;
-	@FXML
-    private Button btnEight;
-	@FXML
-    private Button btnNine;
-	@FXML
-    private Button btnDel;
-    @FXML
-    private Button btnDot;
     
 	Customer cust;
 	
