@@ -96,7 +96,7 @@ public class AccountController implements Initializable {
 			Statement st = Main.connect.createStatement();
 			int i = st.executeUpdate(query);
 			if (i==1) {
-				System.out.println("Success add money");
+				System.out.println("Success withdraw money");
 				String getBalance = "SELECT balance FROM bank.information WHERE id="+FirstPageController.id+";";
 				ResultSet rs = st.executeQuery(getBalance);
 				rs.next();
