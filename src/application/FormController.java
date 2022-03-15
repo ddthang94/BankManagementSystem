@@ -2,13 +2,16 @@ package application;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -49,9 +52,79 @@ public class FormController implements Initializable {
     
     public void Submit() throws SQLException {
     	Customer cust = new Customer(fname.getText(), lname.getText(), username.getText(), password.getText(), phoneNum.getText(), 
-    								email.getText(), doBirth.getValue().toString(), gender.getSelectionModel().getSelectedItem());
+				email.getText(), doBirth.getValue().toString(), gender.getSelectionModel().getSelectedItem());
+    	if (fname.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("First name is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (lname.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Last name is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (username.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Username is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (password.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Password is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (phoneNum.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Phonenumber is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (email.getText().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Email is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	if (doBirth.getValue().equals(LocalDate.now())) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Please select your birthday!");
+			a.showAndWait();
+			return;
+    	}
+    	if (gender.getSelectionModel().getSelectedItem().isEmpty()) {
+    		Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Warning");
+			a.setResizable(false);
+			a.setHeaderText("Gender is empty!");
+			a.showAndWait();
+			return;
+    	}
+    	
     	objUpload(cust);
     	new Main().changeScene("SignIn.fxml");
+    	Alert a = new Alert(Alert.AlertType.INFORMATION);
+		a.setTitle("Welcome!");
+		a.setResizable(false);
+		a.setHeaderText("Your account was created successfully!" + "/nUsername: " + username.getText() + "/Password: " + password.getText());
+		a.showAndWait();
     }
     
     public void objUpload(Customer cust) throws SQLException {
