@@ -62,7 +62,31 @@ public class FirstPageController {
 	
 	public void SignUp() {
 		customer = new Customer(tUsername.getText(), tPassword.getText());
-		new Main().changeScene("SignUpForm.fxml");
+		if (tUsername.getText().isEmpty()) {
+			Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Alert");
+			a.setResizable(false);
+			a.setHeaderText("Please enter the username to create a new account!");
+			a.showAndWait();
+		} else {
+			try {
+				String query = "SELECT * FROM bank.login WHERE username = '"+tUsername.getText()+"';";
+				Statement st = Main.connect.createStatement();
+				ResultSet rs = st.executeQuery(query);
+				rs.next();
+				String dbusername = rs.getString(2);
+				String inputUsername = tUsername.getText();
+				if (dbusername.equals(inputUsername)) {
+					Alert a = new Alert(Alert.AlertType.INFORMATION);
+					a.setTitle("Alert");
+					a.setResizable(false);
+					a.setHeaderText("Account is available, please enter the correct password!");
+					a.showAndWait();
+				}	
+			} catch (SQLException sqlException) {
+				new Main().changeScene("SignUpForm.fxml");
+			}
+		}
 	}
 	
 	static public Customer downloadObj(int id) throws SQLException {

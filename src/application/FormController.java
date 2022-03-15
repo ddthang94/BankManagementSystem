@@ -2,9 +2,7 @@ package application;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -42,8 +40,10 @@ public class FormController implements Initializable {
     
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
-		doBirth.setValue(LocalDate.now());
+		Customer cust = FirstPageController.customer;
+		username.setText(cust.getUsername());
 		gender.setItems(FXCollections.observableArrayList("Male","Female"));
+		doBirth.setValue(LocalDate.now());
 		gender.setValue("--");
 	}	
     
@@ -69,7 +69,7 @@ public class FormController implements Initializable {
 			a.setHeaderText("Last name is empty!");
 			a.showAndWait();
 			return;
-    	}    	
+    	}
     	if (username.getText().isEmpty()) {
     		Alert a = new Alert(Alert.AlertType.INFORMATION);
 			a.setTitle("Warning");
@@ -77,20 +77,6 @@ public class FormController implements Initializable {
 			a.setHeaderText("Username is empty!");
 			a.showAndWait();
 			return;
-    	} else {
-    		String q = "SELECT * FROM bank.information WHERE username = '"+username.getText()+"';";
-        	Statement st = Main.connect.createStatement();
-        	ResultSet rs = st.executeQuery(q);
-        	rs.next();
-        	String dbusername = rs.getString(4);
-        	if (dbusername.equals(username.getText())) {
-        		Alert a = new Alert(Alert.AlertType.INFORMATION);
-    			a.setTitle("Warning");
-    			a.setResizable(false);
-    			a.setHeaderText("The username has been used!");
-    			a.showAndWait();
-    			return;
-        	}
     	}
     	if (password.getText().isEmpty()) {
     		Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -132,7 +118,6 @@ public class FormController implements Initializable {
 			a.showAndWait();
 			return;
     	}
-    	
     	objUpload(cust);
     	new Main().changeScene("SignIn.fxml");
     	Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -148,17 +133,17 @@ public class FormController implements Initializable {
     	PreparedStatement ps = Main.connect.prepareStatement(query1);
     	int checkquery1 = ps.executeUpdate();
     	if (checkquery1==1) {
-    		System.out.println("Succeed!");
+    		System.out.println("Succeed 1!");
     	} else {
-    		System.out.println("Succeed!");
+    		System.out.println("Fail 1!");
     	}
     	String query2 = "INSERT INTO `bank`.`login` VALUES (NULL,'"+cust.getUsername()+"','"+cust.getPassword()+"');";
     	ps = Main.connect.prepareStatement(query2);
     	int checkquery2 = ps.executeUpdate();
     	if (checkquery2==1) {
-    		System.out.println("Succeed!");
+    		System.out.println("Succeed 2!");
     	} else {
-    		System.out.println("Succeed!");
+    		System.out.println("Fail 2!");
     	}
     }
 }
