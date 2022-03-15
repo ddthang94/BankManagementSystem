@@ -24,23 +24,38 @@ public class FirstPageController {
 	static Customer customer;
 	
 	public void SignIn() {		
-		try {
-			String query1 = "SELECT id,password FROM bank.login WHERE username = '"+tUsername.getText()+"';";
+		 try {
+			// declare the query to select all from bank.login where username equal input
+			String query1 = "SELECT * FROM bank.login WHERE username = '"+tUsername.getText()+"';";
+			// create java statement
 			Statement st = Main.connect.createStatement();
+			// execute the query, and get a java resultset
 			ResultSet rs = st.executeQuery(query1);
+			// moving the cursor from default position to 1st row
 			rs.next();
-			String dbpassword = rs.getString(2);
+			String dbusername = rs.getString(2);
+			String dbpassword = rs.getString(3);			
+			String inputUsername = tUsername.getText();
+			String inputPassword = tPassword.getText();
 			
-			if (dbpassword.contentEquals(tPassword.getText())) {
-				System.out.println("Correct password");
+			if (inputUsername.equals(dbusername) && inputPassword.equals(dbpassword)) {
+				System.out.println("Correct information");
 				id = rs.getInt(1);
+				System.out.println(id);
+				System.out.println(dbusername + " " + dbpassword);
 				new Main().changeScene("UserAccount.fxml");
+			} else if (inputUsername.equals(dbusername) && inputPassword!=dbpassword) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Alert");
+				alert.setResizable(false);
+				alert.setHeaderText("Please insert the correct password!");
+				alert.showAndWait();
 			}
 		} catch(SQLException sqlException) {
 			Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-			alert1.setTitle("Message");
+			alert1.setTitle("Alert");
 			alert1.setResizable(false);
-			alert1.setHeaderText("Please enter the username or password");
+			alert1.setHeaderText("Account is not available!");
 			alert1.showAndWait();
 		}
 	}

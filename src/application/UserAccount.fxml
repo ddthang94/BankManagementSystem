@@ -324,11 +324,6 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab closable="false" text="Change Password">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #5D9CEC; -fx-background-radius: 0 0 5 5;" />
-               </content>
-            </Tab>
         </tabs>
          <opaqueInsets>
             <Insets />
