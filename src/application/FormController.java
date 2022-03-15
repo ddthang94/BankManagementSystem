@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -38,6 +39,7 @@ public class FormController implements Initializable {
     
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
+		doBirth.setValue(LocalDate.now());
 		gender.setItems(FXCollections.observableArrayList("Male","Female"));
 	}	
     
@@ -46,7 +48,6 @@ public class FormController implements Initializable {
     }
     
     public void Submit() throws SQLException {
-    	System.out.println(gender.getSelectionModel().getSelectedItem());
     	Customer cust = new Customer(fname.getText(), lname.getText(), username.getText(), password.getText(), phoneNum.getText(), 
     								email.getText(), doBirth.getValue().toString(), gender.getSelectionModel().getSelectedItem());
     	objUpload(cust);
@@ -57,13 +58,19 @@ public class FormController implements Initializable {
     	String query1 = "INSERT INTO `bank`.`information` VALUES (NULL,'"+cust.getFname()+"','"+cust.getLname()+"','"+cust.getUsername()+"','"+cust.getPhoneNum()+"',"
     															+ "'"+cust.getEmail()+"','"+cust.getDoBirth()+"','"+cust.getGender()+"', "+0+");";
     	PreparedStatement ps = Main.connect.prepareStatement(query1);
-    	int i = ps.executeUpdate();
-    		if(i==1)System.out.println("Success1");
-    		else System.out.println("Failure1");
+    	int checkquery1 = ps.executeUpdate();
+    	if (checkquery1==1) {
+    		System.out.println("Succeed!");
+    	} else {
+    		System.out.println("Succeed!");
+    	}
     	String query2 = "INSERT INTO `bank`.`login` VALUES (NULL,'"+cust.getUsername()+"','"+cust.getPassword()+"');";
     	ps = Main.connect.prepareStatement(query2);
-    	int j = ps.executeUpdate();
-    		if(j==1) System.out.println("Success2");
-    		else System.out.println("Failure2");
+    	int checkquery2 = ps.executeUpdate();
+    	if (checkquery2==1) {
+    		System.out.println("Succeed!");
+    	} else {
+    		System.out.println("Succeed!");
+    	}
     }
 }

@@ -45,18 +45,18 @@ public class FirstPageController {
 				System.out.println(dbusername + " " + dbpassword);
 				new Main().changeScene("UserAccount.fxml");
 			} else if (inputUsername.equals(dbusername) && inputPassword!=dbpassword) {
-				Alert alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.setTitle("Alert");
-				alert.setResizable(false);
-				alert.setHeaderText("Please insert the correct password!");
-				alert.showAndWait();
+				Alert a = new Alert(Alert.AlertType.INFORMATION);
+				a.setTitle("Alert");
+				a.setResizable(false);
+				a.setHeaderText("Please insert the correct password!");
+				a.showAndWait();
 			}
 		} catch(SQLException sqlException) {
-			Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-			alert1.setTitle("Alert");
-			alert1.setResizable(false);
-			alert1.setHeaderText("Account is not available!");
-			alert1.showAndWait();
+			Alert a = new Alert(Alert.AlertType.INFORMATION);
+			a.setTitle("Alert");
+			a.setResizable(false);
+			a.setHeaderText("Account is not available!");
+			a.showAndWait();
 		}
 	}
 	
