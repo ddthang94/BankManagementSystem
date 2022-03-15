@@ -44,6 +44,7 @@ public class FormController implements Initializable {
 	public void initialize (URL location, ResourceBundle resources) {
 		doBirth.setValue(LocalDate.now());
 		gender.setItems(FXCollections.observableArrayList("Male","Female"));
+		gender.setValue("--");
 	}	
     
     public void Back() {
@@ -68,7 +69,7 @@ public class FormController implements Initializable {
 			a.setHeaderText("Last name is empty!");
 			a.showAndWait();
 			return;
-    	}
+    	}    	
     	if (username.getText().isEmpty()) {
     		Alert a = new Alert(Alert.AlertType.INFORMATION);
 			a.setTitle("Warning");
@@ -76,6 +77,20 @@ public class FormController implements Initializable {
 			a.setHeaderText("Username is empty!");
 			a.showAndWait();
 			return;
+    	} else {
+    		String q = "SELECT * FROM bank.information WHERE username = '"+username.getText()+"';";
+        	Statement st = Main.connect.createStatement();
+        	ResultSet rs = st.executeQuery(q);
+        	rs.next();
+        	String dbusername = rs.getString(4);
+        	if (dbusername.equals(username.getText())) {
+        		Alert a = new Alert(Alert.AlertType.INFORMATION);
+    			a.setTitle("Warning");
+    			a.setResizable(false);
+    			a.setHeaderText("The username has been used!");
+    			a.showAndWait();
+    			return;
+        	}
     	}
     	if (password.getText().isEmpty()) {
     		Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -109,7 +124,7 @@ public class FormController implements Initializable {
 			a.showAndWait();
 			return;
     	}
-    	if (gender.getSelectionModel().getSelectedItem().isEmpty()) {
+    	if (gender.getValue()=="--") {
     		Alert a = new Alert(Alert.AlertType.INFORMATION);
 			a.setTitle("Warning");
 			a.setResizable(false);
@@ -123,7 +138,7 @@ public class FormController implements Initializable {
     	Alert a = new Alert(Alert.AlertType.INFORMATION);
 		a.setTitle("Welcome!");
 		a.setResizable(false);
-		a.setHeaderText("Your account was created successfully!" + "/nUsername: " + username.getText() + "/Password: " + password.getText());
+		a.setHeaderText("Your account was created successfully!" + " Username: " + username.getText() + " Password: " + password.getText());
 		a.showAndWait();
     }
     

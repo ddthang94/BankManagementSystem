@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -117,16 +116,6 @@ public class AccountController implements Initializable {
 			a.showAndWait();
 		}
 	}
-	
-	public void processNumber (ActionEvent event) {
-		Button button = (Button)event.getSource();
-		String buttonText = button.getText();
-		if (buttonText.matches("[0-9\\.]")) {
-			numDeposit.appendText(buttonText);
-			return;
-		}
-	}
-	
 	public void SignOut() {
 		new Main().changeScene("SignIn.fxml");
 	}
