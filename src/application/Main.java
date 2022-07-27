@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
-
 public class Main extends Application {
 	static Stage pstage;
 	static Connection connect;
